@@ -1,11 +1,10 @@
 package com.geeks.mvvm15_1j.ui
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.geeks.mvvm15_1j.ui.fragments.EpisodFragment
+import com.geeks.mvvm15_1j.ui.fragments.episode.EpisodFragment
 import com.geeks.mvvm15_1j.ui.fragments.characters.CharactersFragment
 import com.geeks.mvvm15_1j.ui.fragments.location.LocationFragment
 

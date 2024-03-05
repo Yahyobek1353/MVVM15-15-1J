@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.geeks.mvvm15_1j.R
+import com.geeks.mvvm15_1j.data.model.RickAndMortyLocation
 import com.geeks.mvvm15_1j.data.model.character.RickAndMortyCharacter
 import com.geeks.mvvm15_1j.databinding.ItemCharactersBinding
 
@@ -39,7 +40,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
             binding.itemTvStatus.text = character.status
             binding.itemTvType.text = character.species
             binding.itemTvLastLocation.text = character.location.name
-            Glide.with(binding.root).load(character.image).centerCrop()
+            Glide.with(binding.root).load(character.image).circleCrop()
                 .into(binding.itemImgCharacter)
 
             when (character.status) {

@@ -1,4 +1,4 @@
-package com.geeks.mvvm15_1j.ui.fragments
+package com.geeks.mvvm15_1j.ui.fragments.episode
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,8 +14,6 @@ import com.geeks.mvvm15_1j.ui.fragments.characters.CharactersFragment
 
 class EpisodFragment : BaseFragment<FragmentEpisodBinding>() {
     override fun getViewBinding() = FragmentEpisodBinding.inflate(layoutInflater)
-    companion object {
-        fun newInstance() = CharactersFragment
-    }
+
 
 }
