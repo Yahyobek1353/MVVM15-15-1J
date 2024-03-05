@@ -1,6 +1,6 @@
 package com.geeks.mvvm15_1j.data.model.character
 
-import com.geeks.mvvm15_1j.data.model.RickAndMortyLocation
+import com.geeks.mvvm15_1j.data.model.location.RickAndMortyLocation
 
 data class RickAndMortyCharacter(
     val id: Int,

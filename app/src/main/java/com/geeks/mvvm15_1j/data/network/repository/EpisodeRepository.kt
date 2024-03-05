@@ -3,21 +3,22 @@ package com.geeks.mvvm15_1j.data.network.repository
 import androidx.lifecycle.MutableLiveData
 import com.geeks.mvvm15_1j.common.Resource
 import com.geeks.mvvm15_1j.data.model.BaseMainResponse
+import com.geeks.mvvm15_1j.data.model.RickAndMortyEpisode
 import com.geeks.mvvm15_1j.data.model.location.RickAndMortyLocation
 import com.geeks.mvvm15_1j.data.network.service.ApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LocationRepository(private val apiService: ApiService) {
-    fun getLocation():MutableLiveData<Resource<BaseMainResponse<RickAndMortyLocation>?>>{
-        val liveData =  MutableLiveData<Resource<BaseMainResponse<RickAndMortyLocation>?>>()
+class EpisodeRepository(private val apiService: ApiService) {
+    fun getEpisode(): MutableLiveData<Resource<BaseMainResponse<RickAndMortyEpisode>?>> {
+        val liveData =  MutableLiveData<Resource<BaseMainResponse<RickAndMortyEpisode>?>>()
         liveData.value = Resource.Loading()
-        apiService.getAllLocation()
-            .enqueue(object : Callback<BaseMainResponse<RickAndMortyLocation>?>{
+        apiService.getAllEpisode()
+            .enqueue(object : Callback<BaseMainResponse<RickAndMortyEpisode>?> {
                 override fun onResponse(
-                    call: Call<BaseMainResponse<RickAndMortyLocation>?>,
-                    response: Response<BaseMainResponse<RickAndMortyLocation>?>
+                    call: Call<BaseMainResponse<RickAndMortyEpisode>?>,
+                    response: Response<BaseMainResponse<RickAndMortyEpisode>?>
                 ) {
                     if (response.isSuccessful && response.body() != null){
                         liveData.value = Resource.Success(data = response.body())
@@ -25,7 +26,7 @@ class LocationRepository(private val apiService: ApiService) {
                 }
 
                 override fun onFailure(
-                    call: Call<BaseMainResponse<RickAndMortyLocation>?>,
+                    call: Call<BaseMainResponse<RickAndMortyEpisode>?>,
                     t: Throwable
                 ) {
                 }

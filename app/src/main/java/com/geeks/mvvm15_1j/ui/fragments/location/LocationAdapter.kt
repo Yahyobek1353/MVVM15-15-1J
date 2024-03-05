@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.geeks.mvvm15_1j.data.model.RickAndMortyLocation
+import com.geeks.mvvm15_1j.data.model.location.RickAndMortyLocation
 import com.geeks.mvvm15_1j.databinding.ItemLocationBinding
 
 class LocationAdapter : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>(){

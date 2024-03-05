@@ -15,6 +15,10 @@ class LocationFragment : BaseFragment<FragmentLocationBinding>() {
     private val viewModel: LocationViewModel by lazy { ViewModelProvider(requireActivity())[LocationViewModel::class.java] }
 
 
+    override fun initialize() {
+        binding.rvLocation.adapter = adapter
+        viewModel.getLocation()
+    }
     override fun launchObserver() {
         viewModel.liveData.observe(viewLifecycleOwner) {
             when(it){

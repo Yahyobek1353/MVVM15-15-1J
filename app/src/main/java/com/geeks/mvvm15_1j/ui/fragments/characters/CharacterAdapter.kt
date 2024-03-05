@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.geeks.mvvm15_1j.R
-import com.geeks.mvvm15_1j.data.model.RickAndMortyLocation
 import com.geeks.mvvm15_1j.data.model.character.RickAndMortyCharacter
 import com.geeks.mvvm15_1j.databinding.ItemCharactersBinding
 
