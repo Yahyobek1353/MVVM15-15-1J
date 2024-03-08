@@ -1,4 +1,4 @@
-package com.geeks.mvvm15_1j.data.model
+package com.geeks.mvvm15_1j.data.model.episode
 
 data class RickAndMortyEpisode(
     val id : Int,

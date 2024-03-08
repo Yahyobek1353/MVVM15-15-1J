@@ -7,8 +7,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.geeks.mvvm15_1j.common.Resource
 import com.geeks.mvvm15_1j.core.BaseFragment
 import com.geeks.mvvm15_1j.databinding.FragmentEpisodBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class EpisodFragment : BaseFragment<FragmentEpisodBinding>() {
     override fun getViewBinding() = FragmentEpisodBinding.inflate(layoutInflater)
     private val adapter: EpisodeAdapter by lazy { EpisodeAdapter() }

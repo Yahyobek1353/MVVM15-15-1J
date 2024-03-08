@@ -7,8 +7,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.geeks.mvvm15_1j.common.Resource
 import com.geeks.mvvm15_1j.core.BaseFragment
 import com.geeks.mvvm15_1j.databinding.FragmentLocationBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LocationFragment : BaseFragment<FragmentLocationBinding>() {
     override fun getViewBinding() = FragmentLocationBinding.inflate(layoutInflater)
     private val adapter: LocationAdapter by lazy { LocationAdapter() }

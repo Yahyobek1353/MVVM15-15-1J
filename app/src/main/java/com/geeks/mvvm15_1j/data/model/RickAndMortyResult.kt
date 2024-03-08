@@ -1,4 +1,4 @@
-package com.geeks.mvvm15_1j.data.model.character
+package com.geeks.mvvm15_1j.data.model
 
 data class RickAndMortyResult (
     val id :Int,

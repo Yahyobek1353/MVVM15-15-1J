@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.geeks.mvvm15_1j.data.model.RickAndMortyEpisode
+import com.geeks.mvvm15_1j.data.model.episode.RickAndMortyEpisode
 import com.geeks.mvvm15_1j.databinding.ItemEpisodeBinding
 
 class EpisodeAdapter : RecyclerView.Adapter<EpisodeAdapter.EpisodeViewHolder>(){

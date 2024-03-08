@@ -5,17 +5,16 @@ import com.geeks.mvvm15_1j.common.Resource
 import com.geeks.mvvm15_1j.data.model.BaseMainResponse
 import com.geeks.mvvm15_1j.data.model.character.RickAndMortyCharacter
 import com.geeks.mvvm15_1j.data.network.service.ApiService
-import com.geeks.mvvm15_1j.data.network.service.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
+import javax.inject.Inject
 
-class CharecterRepository(private val apiService: ApiService) {
-    fun getCharacter(): MutableLiveData<Resource<BaseMainResponse<RickAndMortyCharacter>?>> {
+class CharecterRepository @Inject constructor(private val apiService: ApiService) {
+    fun getCharacter(name: String): MutableLiveData<Resource<BaseMainResponse<RickAndMortyCharacter>?>> {
         val liveData = MutableLiveData<Resource<BaseMainResponse<RickAndMortyCharacter>?>>()
         liveData.value = Resource.Loading()
-        apiService.getAllCharacter()
+        apiService.getAllCharacter(name = name)
             .enqueue(object : Callback<BaseMainResponse<RickAndMortyCharacter>?> {
                 override fun onResponse(
                     call: Call<BaseMainResponse<RickAndMortyCharacter>?>,

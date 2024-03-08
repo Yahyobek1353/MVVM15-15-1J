@@ -8,8 +8,9 @@ import com.geeks.mvvm15_1j.data.network.service.ApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class LocationRepository(private val apiService: ApiService) {
+class LocationRepository @Inject constructor(private val apiService: ApiService) {
     fun getLocation():MutableLiveData<Resource<BaseMainResponse<RickAndMortyLocation>?>>{
         val liveData =  MutableLiveData<Resource<BaseMainResponse<RickAndMortyLocation>?>>()
         liveData.value = Resource.Loading()

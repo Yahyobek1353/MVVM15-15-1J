@@ -3,14 +3,14 @@ package com.geeks.mvvm15_1j.data.network.repository
 import androidx.lifecycle.MutableLiveData
 import com.geeks.mvvm15_1j.common.Resource
 import com.geeks.mvvm15_1j.data.model.BaseMainResponse
-import com.geeks.mvvm15_1j.data.model.RickAndMortyEpisode
-import com.geeks.mvvm15_1j.data.model.location.RickAndMortyLocation
+import com.geeks.mvvm15_1j.data.model.episode.RickAndMortyEpisode
 import com.geeks.mvvm15_1j.data.network.service.ApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class EpisodeRepository(private val apiService: ApiService) {
+class EpisodeRepository @Inject constructor(private val apiService: ApiService) {
     fun getEpisode(): MutableLiveData<Resource<BaseMainResponse<RickAndMortyEpisode>?>> {
         val liveData =  MutableLiveData<Resource<BaseMainResponse<RickAndMortyEpisode>?>>()
         liveData.value = Resource.Loading()
