@@ -37,6 +37,7 @@
         android:id="@+id/rv_characters"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_load_more"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/btn_filter"
         tools:listitem="@layout/item_characters" />
@@ -50,6 +51,92 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/btn_filter"
+        app:layout_constraintEnd_toEndOf="@id/btn_filter">
+
+        <RadioButton
+            android:id="@+id/status_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     Status"
+            android:layout_marginEnd="20dp"
+            android:textSize="16sp"/>
+
+        <RadioButton
+            android:id="@+id/type_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     Species"
+            android:layout_marginEnd="20dp"
+            android:textSize="16sp"/>
+
+        <RadioButton
+            android:id="@+id/gender_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     Gender"
+            android:layout_marginEnd="20dp"
+            android:textSize="16sp"/>
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/status_radio_group"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toStartOf="@id/radio_group"
+        app:layout_constraintTop_toTopOf="@id/radio_group">
+
+        <RadioButton
+            android:id="@+id/dead_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="     Dead"
+            android:layout_marginEnd="20dp"
+            android:textSize="16sp"/>
+
+
+        <RadioButton
+            android:id="@+id/alive_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     Alive"
+            android:layout_marginEnd="20dp"
+            android:textSize="16sp"/>
+
+        <RadioButton
+            android:id="@+id/unknown_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     unknown"
+            android:layout_marginEnd="20dp"
+            android:textSize="16sp"/>
+
+    </RadioGroup>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Загрузить ещё"
+        android:id="@+id/btn_load_more"/>
+
+
 
 
 

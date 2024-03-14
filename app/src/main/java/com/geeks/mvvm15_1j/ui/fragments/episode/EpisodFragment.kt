@@ -10,7 +10,7 @@ import com.geeks.mvvm15_1j.databinding.FragmentEpisodBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EpisodFragment : BaseFragment<FragmentEpisodBinding>() {
+class EpisodeFragment : BaseFragment<FragmentEpisodBinding>() {
     override fun getViewBinding() = FragmentEpisodBinding.inflate(layoutInflater)
     private val adapter: EpisodeAdapter by lazy { EpisodeAdapter() }
     private val viewModel: EpisodeViewModel by lazy { ViewModelProvider(requireActivity())[EpisodeViewModel::class.java] }

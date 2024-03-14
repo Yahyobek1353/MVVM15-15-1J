@@ -10,7 +10,7 @@ data class RickAndMortyCharacter(
     val species: String,
     val type: String,
     val gender: String,
-    val origin: RickAndMortyOrigin,
+    val origin: RickAndMortyOrigin? = null,
     val image: String,
     val location: RickAndMortyLocation
 )

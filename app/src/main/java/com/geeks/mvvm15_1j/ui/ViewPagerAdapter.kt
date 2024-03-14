@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.geeks.mvvm15_1j.ui.fragments.episode.EpisodFragment
 import com.geeks.mvvm15_1j.ui.fragments.characters.CharactersFragment
+import com.geeks.mvvm15_1j.ui.fragments.episode.EpisodeFragment
 import com.geeks.mvvm15_1j.ui.fragments.location.LocationFragment
 
 
@@ -21,7 +21,7 @@ class ViewPagerAdapter(fragment: FragmentManager, lifecycle : Lifecycle) : Fragm
                 CharactersFragment()
             }
             2 ->{
-                EpisodFragment()
+                EpisodeFragment()
             }
             else->{
                 Fragment()

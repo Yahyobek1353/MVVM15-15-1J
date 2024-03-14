@@ -10,11 +10,11 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class CharecterRepository @Inject constructor(private val apiService: ApiService) {
-    fun getCharacter(name: String): MutableLiveData<Resource<BaseMainResponse<RickAndMortyCharacter>?>> {
+class CharacterRepository @Inject constructor(private val apiService: ApiService) {
+    fun getCharacter(page: Int,name: String, status : String , gender : String, species : String): MutableLiveData<Resource<BaseMainResponse<RickAndMortyCharacter>?>> {
         val liveData = MutableLiveData<Resource<BaseMainResponse<RickAndMortyCharacter>?>>()
         liveData.value = Resource.Loading()
-        apiService.getAllCharacter(name = name)
+        apiService.getAllCharacter(page = page,name = name, status = status, gender = gender, species = species)
             .enqueue(object : Callback<BaseMainResponse<RickAndMortyCharacter>?> {
                 override fun onResponse(
                     call: Call<BaseMainResponse<RickAndMortyCharacter>?>,

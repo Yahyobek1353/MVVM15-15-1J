@@ -1,6 +1,6 @@
 package com.geeks.mvvm15_1j.DI
 
-import com.geeks.mvvm15_1j.data.network.repository.CharecterRepository
+import com.geeks.mvvm15_1j.data.network.repository.CharacterRepository
 import com.geeks.mvvm15_1j.data.network.repository.EpisodeRepository
 import com.geeks.mvvm15_1j.data.network.repository.LocationRepository
 import com.geeks.mvvm15_1j.data.network.service.ApiService
@@ -25,8 +25,8 @@ class RickAndMortyModule {
     }
 
     @Provides
-    fun provideCharacterRepository(apiService: ApiService): CharecterRepository{
-        return CharecterRepository(apiService)
+    fun provideCharacterRepository(apiService: ApiService): CharacterRepository{
+        return CharacterRepository(apiService)
     }
 
     @Provides

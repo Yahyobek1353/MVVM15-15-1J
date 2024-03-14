@@ -7,6 +7,7 @@ import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import com.geeks.mvvm15_1j.R
 import com.geeks.mvvm15_1j.common.Resource
 import com.geeks.mvvm15_1j.core.BaseFragment
 import com.geeks.mvvm15_1j.databinding.FragmentCharactersBinding
@@ -20,13 +21,84 @@ class CharactersFragment : BaseFragment<FragmentCharactersBinding>() {
     private val adapter: CharacterAdapter by lazy { CharacterAdapter() }
     private val viewModel:CharactersViewModel by lazy { ViewModelProvider(requireActivity())[CharactersViewModel::class.java] }
 
+    private var page = 1
+
     override fun initialize() {
-        var name : String = " "
         binding.rvCharacters.adapter = adapter
-        viewModel.getCharacter("")
+        viewModel.getCharacter(page, "" , "", "", "")
     }
 
     override fun constructListeners() {
+        binding.btnLoadMore.setOnClickListener{
+            page++
+            viewModel.liveData.observe(viewLifecycleOwner) {
+                when (it) {
+                    is Resource.Loading -> {
+                        binding.progressBar.isVisible = true
+                        binding.rvCharacters.isVisible = false
+                    }
+                    is Resource.Success -> {
+                        binding.progressBar.isGone = true
+                        binding.rvCharacters.isVisible = true
+                        viewModel.getCharacter(page = page, "unknown", "", "", "")
+                        it.data?.results?.let { it1 -> adapter.setCharacter(it1) }
+                    }
+                    is Resource.Error -> {
+                        binding.progressBar.isGone = true
+                        binding.rvCharacters.isVisible = true
+                        Toast.makeText(
+                            requireContext(),
+                            "Упс! Произошла какая-то ошибка",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        Log.e("ololo", "Error")
+                    }
+                }
+            }
+        }
+        binding.btnFilter.setOnClickListener{
+            if (binding.radioGroup.isVisible){
+                binding.radioGroup.isGone = true
+            }else{
+                binding.radioGroup.isVisible = true
+            }
+        }
+        //---------------------------------------------------------------------------------
+        binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId){
+                R.id.status_btn -> {
+                    binding.statusRadioGroup.isVisible = true
+                }
+                R.id.type_btn ->{
+                    binding.statusRadioGroup.isGone = true
+                }
+                R.id.gender_btn -> {
+                    binding.statusRadioGroup.isGone = true
+                }
+            }
+
+        }
+
+        //------------------------------------------------------------------------------------
+        binding.statusRadioGroup.setOnCheckedChangeListener{ _, index->
+            when (index){
+                R.id.alive_btn ->{
+                    ServerInfo(page , "" , "Alive")
+                    binding.statusRadioGroup.isGone = true
+                }
+                R.id.dead_btn->{
+                    ServerInfo(page , "","Dead")
+                    binding.statusRadioGroup.isGone = true
+                }
+                R.id.unknown_btn->{
+                    ServerInfo(page , "","unknown")
+                    binding.statusRadioGroup.isGone = true
+                }
+            }
+        }
+
+
+        //------------------------------------------------------------------------------------
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
@@ -34,32 +106,7 @@ class CharactersFragment : BaseFragment<FragmentCharactersBinding>() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText != null) {
-                    viewModel.liveData.observe(viewLifecycleOwner) {
-                        when (it) {
-                            is Resource.Loading -> {
-                                binding.progressBar.isVisible = true
-                                binding.rvCharacters.isVisible = false
-                            }
-                            is Resource.Success -> {
-                                binding.progressBar.isGone = true
-                                binding.rvCharacters.isVisible = true
-                                binding.rvCharacters.animate().alpha(0f)
-                                binding.rvCharacters.animate().alpha(1f).startDelay = 6000
-                                viewModel.getCharacter(newText)
-                                it.data?.results?.let { it1 -> adapter.setCharacter(it1) }
-                            }
-                            is Resource.Error -> {
-                                binding.progressBar.isGone = true
-                                binding.rvCharacters.isVisible = true
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Упс! Произошла какая-то ошибка",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                Log.e("ololo", "Error")
-                            }
-                        }
-                    }
+                    ServerInfo(page , newText , "")
                 }
                 return true
             }
@@ -67,11 +114,17 @@ class CharactersFragment : BaseFragment<FragmentCharactersBinding>() {
     }
 
     override fun launchObserver() {
+       ServerInfo(page,"","")
+    }
+
+
+    private fun ServerInfo(page :Int,name : String , status:String){
         viewModel.liveData.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Loading -> binding.progressBar.isVisible = true
                 is Resource.Success -> {
                     binding.progressBar.isGone = true
+                    viewModel.getCharacter(page = page, name= name, status = status, "", "")
                     it.data?.results?.let { it1 -> adapter.setCharacter(it1) }
                 }
                 is Resource.Error -> {

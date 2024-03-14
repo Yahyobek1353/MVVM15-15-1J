@@ -13,7 +13,11 @@ interface ApiService {
 
     @GET("character")
     fun getAllCharacter(
-        @Query("name") name: String? = null
+        @Query("page") page: Int? = 1,
+        @Query("name") name: String? = null,
+        @Query("status") status: String? = null,
+        @Query("gender") gender: String? = null,
+        @Query("species") species: String? = null
     ): Call<BaseMainResponse<RickAndMortyCharacter>>
     @GET("location")
     fun getAllLocation(): Call<BaseMainResponse<RickAndMortyLocation>>
